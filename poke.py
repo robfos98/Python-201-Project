@@ -24,9 +24,9 @@ print('Name a Pokemon, or pick a number up to 898; or type quit to leave.')
 while True:
     mon = input('Search: ').lower()
     if mon in ['exit', 'leave', 'quit', 'end', 'out', 'over', 'q', 'x']: break
-    try: mon = requests.get('https://pokeapi.co/api/v2/pokemon/' + mon)
+    try: mon = requests.get('https://pokeapi.co/api/v2/pokemon/' + mon).json()
     except:
         print('\nIt doesn\'t look like I can get that for you. Check if you made a typo.')
         continue
-    display(mon.json())
+    display(mon)
     print('Name another Pokemon, or pick a number up to 898; or type quit to leave.')
