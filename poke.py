@@ -16,6 +16,7 @@ def display(mon):
         if ability['is_hidden']:
             print('Hidden Ability:')
             print(ability['ability']['name'].title())
+    print('')
 
 print('\nHello!')
 print('This program can tell you about a Pokemon.')
@@ -23,9 +24,9 @@ print('Name a Pokemon, or pick a number up to 898; or type quit to leave.')
 while True:
     mon = input('Search: ').lower()
     if mon in ['exit', 'leave', 'quit', 'end', 'out', 'over', 'q', 'x']: break
-    try: mon = requests.get('https://pokeapi.co/api/v2/pokemon/' + mon).json()
+    try: mon = requests.get('https://pokeapi.co/api/v2/pokemon/' + mon)
     except:
         print('\nIt doesn\'t look like I can get that for you. Check if you made a typo.')
         continue
-    display(mon)
+    display(mon.json())
     print('Name another Pokemon, or pick a number up to 898; or type quit to leave.')
